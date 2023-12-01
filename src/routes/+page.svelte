@@ -1,15 +1,63 @@
-<!-- YOU CAN DELETE EVERYTHING IN THIS PAGE -->
+<script lang="ts">
+	import type { BoulderBar } from "./types";
+	import Bar from './Bar.svelte'
+	import RefreshIndicator from "./RefreshIndicator.svelte";
 
-<div class="container h-full mx-auto flex justify-center items-center">
-	<div class="space-y-5">
-		<h1 class="h1">Let's get cracking bones!</h1>
-		<p>Start by exploring:</p>
-		<ul>
-			<li><code class="code">/src/routes/+layout.svelte</code> - barebones layout</li>
-			<li><code class="code">/src/app.postcss</code> - app wide css</li>
-			<li>
-				<code class="code">/src/routes/+page.svelte</code> - this page, you can replace the contents
-			</li>
-		</ul>
-	</div>
+
+	let bars : BoulderBar[] = [
+			{
+				name:	'Wiener Berg',
+				tag:	'wb',
+				occupancy: 0
+			},
+			{
+				name:	'Hauptbahnhof',
+				tag:	'hbf',
+				occupancy: 7
+			},
+			{
+				name:	'Hannovermarkt',
+				tag:	'han',
+				occupancy: 99
+			},
+			{
+				name:	'Seestadt',
+				tag:	'see',
+				occupancy: 100
+			},
+			{
+				name:	'Linz',
+				tag:	'LNZ',
+				occupancy: 60
+			},
+			{
+				name:	'Salzburg',
+				tag:	'SBG',
+				occupancy: 80
+			}
+		]
+;
+	let countdown = 10;
+
+
+	function refreshCountdown() {
+		countdown = countdown <= 1 ? 10 : countdown - 1
+		setTimeout(refreshCountdown, 1000)
+	}
+
+	refreshCountdown()
+
+</script>
+
+
+<div class='w-full text-right bg-black p-2'>
+	<RefreshIndicator {countdown} />
+</div>
+
+<div class='max-w-screen-md m-auto flex gap-4 flex-col p-4'>
+	{#each bars as bar}
+		<Bar name={bar.name} occupancy={bar.occupancy}/>
+	{:else}
+		<div class='text-center w-full p-2'>Keine Bars definiert</div>
+	{/each}
 </div>

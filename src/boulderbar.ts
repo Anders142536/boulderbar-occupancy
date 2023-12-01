@@ -1,16 +1,17 @@
-// You can also use the generator at https://skeleton.dev/docs/generator to create these values for you
+
 import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin';
+
 export const boulderbar: CustomThemeConfig = {
-	name: 'boulderbar',
-	properties: {
+    name: 'boulderbar',
+    properties: {
 		// =~= Theme Properties =~=
-		"--theme-font-family-base": "system-ui",
-		"--theme-font-family-heading": "system-ui",
+		"--theme-font-family-base": `system-ui`,
+		"--theme-font-family-heading": `system-ui`,
 		"--theme-font-color-base": "0 0 0",
 		"--theme-font-color-dark": "255 255 255",
 		"--theme-rounded-base": "9999px",
 		"--theme-rounded-container": "8px",
-		"--theme-border-base": "1px",
+		"--theme-border-base": "2px",
 		// =~= Theme On-X Colors =~=
 		"--on-primary": "0 0 0",
 		"--on-secondary": "255 255 255",
@@ -20,17 +21,17 @@ export const boulderbar: CustomThemeConfig = {
 		"--on-error": "255 255 255",
 		"--on-surface": "255 255 255",
 		// =~= Theme Colors  =~=
-		// primary | #0FBA81 
-		"--color-primary-50": "219 245 236", // #dbf5ec
-		"--color-primary-100": "207 241 230", // #cff1e6
-		"--color-primary-200": "195 238 224", // #c3eee0
-		"--color-primary-300": "159 227 205", // #9fe3cd
-		"--color-primary-400": "87 207 167", // #57cfa7
-		"--color-primary-500": "15 186 129", // #0FBA81
-		"--color-primary-600": "14 167 116", // #0ea774
-		"--color-primary-700": "11 140 97", // #0b8c61
-		"--color-primary-800": "9 112 77", // #09704d
-		"--color-primary-900": "7 91 63", // #075b3f
+		// primary | #ffcc00 
+		"--color-primary-50": "255 247 217", // #fff7d9
+		"--color-primary-100": "255 245 204", // #fff5cc
+		"--color-primary-200": "255 242 191", // #fff2bf
+		"--color-primary-300": "255 235 153", // #ffeb99
+		"--color-primary-400": "255 219 77", // #ffdb4d
+		"--color-primary-500": "255 204 0", // #ffcc00
+		"--color-primary-600": "230 184 0", // #e6b800
+		"--color-primary-700": "191 153 0", // #bf9900
+		"--color-primary-800": "153 122 0", // #997a00
+		"--color-primary-900": "125 100 0", // #7d6400
 		// secondary | #4F46E5 
 		"--color-secondary-50": "229 227 251", // #e5e3fb
 		"--color-secondary-100": "220 218 250", // #dcdafa
@@ -86,16 +87,17 @@ export const boulderbar: CustomThemeConfig = {
 		"--color-error-700": "159 19 89", // #9f1359
 		"--color-error-800": "127 15 71", // #7f0f47
 		"--color-error-900": "104 12 58", // #680c3a
-		// surface | #495a8f 
-		"--color-surface-50": "228 230 238", // #e4e6ee
-		"--color-surface-100": "219 222 233", // #dbdee9
-		"--color-surface-200": "210 214 227", // #d2d6e3
-		"--color-surface-300": "182 189 210", // #b6bdd2
-		"--color-surface-400": "128 140 177", // #808cb1
-		"--color-surface-500": "73 90 143", // #495a8f
-		"--color-surface-600": "66 81 129", // #425181
-		"--color-surface-700": "55 68 107", // #37446b
-		"--color-surface-800": "44 54 86", // #2c3656
-		"--color-surface-900": "36 44 70", // #242c46
+		// surface | #2e2d2c 
+		"--color-surface-50": "224 224 223", // #e0e0df
+		"--color-surface-100": "213 213 213", // #d5d5d5
+		"--color-surface-200": "203 203 202", // #cbcbca
+		"--color-surface-300": "171 171 171", // #ababab
+		"--color-surface-400": "109 108 107", // #6d6c6b
+		"--color-surface-500": "46 45 44", // #2e2d2c
+		"--color-surface-600": "41 41 40", // #292928
+		"--color-surface-700": "35 34 33", // #232221
+		"--color-surface-800": "28 27 26", // #1c1b1a
+		"--color-surface-900": "23 22 22", // #171616
+		
 	}
 }
