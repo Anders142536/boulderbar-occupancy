@@ -1,9 +1,9 @@
 <script lang="ts">
-	export let name = '';
-	export let occupancy = 99;
+	export let name = ''
+	export let occupancy = 99
 
-	let bg = 'green';
-	$: bg = occupancy < 50 ? 'green' : occupancy > 80 ? 'red' : 'yellow';
+	let bg = 'green'
+	$: bg = occupancy < 50 ? 'green' : occupancy > 80 ? 'red' : 'yellow'
 </script>
 
 <div>

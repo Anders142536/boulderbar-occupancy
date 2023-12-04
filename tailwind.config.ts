@@ -1,7 +1,7 @@
-import { join } from 'path';
-import type { Config } from 'tailwindcss';
-import { skeleton } from '@skeletonlabs/tw-plugin';
-import { boulderbar } from './src/boulderbar';
+import { join } from 'path'
+import type { Config } from 'tailwindcss'
+import { skeleton } from '@skeletonlabs/tw-plugin'
+import { boulderbar } from './src/boulderbar'
 
 export default {
 	darkMode: 'class',
@@ -19,4 +19,4 @@ export default {
 			}
 		})
 	]
-} satisfies Config;
+} satisfies Config

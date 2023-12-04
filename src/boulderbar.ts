@@ -1,4 +1,4 @@
-import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin';
+import type { CustomThemeConfig } from '@skeletonlabs/tw-plugin'
 
 export const boulderbar: CustomThemeConfig = {
 	name: 'boulderbar',
@@ -98,4 +98,4 @@ export const boulderbar: CustomThemeConfig = {
 		'--color-surface-800': '28 27 26', // #1c1b1a
 		'--color-surface-900': '23 22 22' // #171616
 	}
-};
+}

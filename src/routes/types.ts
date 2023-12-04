@@ -1,5 +1,9 @@
 export type BoulderBar = {
-	name: string;
-	tag: string;
-	occupancy: number;
-};
+	meta: BarMetaData
+	occupancy: number
+}
+
+export type BarMetaData = {
+	name: string
+	tag: string
+}
