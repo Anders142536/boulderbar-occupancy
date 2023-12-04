@@ -1,6 +1,5 @@
-
 export type BoulderBar = {
-	name: string,
-	tag: string,
-	occupancy: number
-}
+	name: string;
+	tag: string;
+	occupancy: number;
+};
