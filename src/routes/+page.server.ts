@@ -1,6 +1,7 @@
 import axios from 'axios'
 import type { PageServerLoad } from './$types'
 import type { BarMetaData, BoulderBar } from './types'
+import { inspect } from 'util'
 
 export const ssr = false
 const ax = axios.create({
@@ -51,7 +52,7 @@ export const load: PageServerLoad = async () => {
 
 const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
 	const response = await ax.get(meta.tag)
-	console.debug(`request: ${JSON.stringify(response.request)}`)
+	console.debug(`request: ${inspect(response.request)}`)
 	const resData = response.data as string
 
 	// ~~~magic~~~
