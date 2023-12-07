@@ -58,10 +58,9 @@ const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
 
 	const matches = h2Regex.exec(resData)
 
-	const occ
+	let occ = -1
 	if (matches === null) {
 		console.debug('matches was null, something failed')
-		occ = -1
 	} else {
 		console.debug(`regex matched: ${matches[0]} with parsed number ${matches[1]}`)
 		occ = Number(matches[1])
