@@ -5,7 +5,7 @@
 	import { invalidateAll } from '$app/navigation'
 	import NavTab from './NavTab.svelte'
 
-	let countdown = 10
+	let countdown = 60
 
 	function refreshCountdown() {
 		if (countdown <= 1) {
