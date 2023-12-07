@@ -53,9 +53,12 @@ const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
 	const response = await ax.get(meta.tag)
 	const resData = response.data as string
 
+	// ~~~magic~~~
 	const h2Regex = /<h2>(\d*)%<\/h2>/g
 
 	const matches = h2Regex.exec(resData)
-	console.log(matches![1])
-	return Number(matches === null ? -1 : matches[1])
+	const occ = matches === null ? -1 : Number(matches[1])
+
+	console.log(`loaded ${meta.name.padEnd(13)} with ${occ.toString().padStart(3)}%`)
+	return occ
 }
