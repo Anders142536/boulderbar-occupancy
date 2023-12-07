@@ -51,6 +51,7 @@ export const load: PageServerLoad = async () => {
 
 const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
 	const response = await ax.get(meta.tag)
+	console.debug(`request: ${response.request}`)
 	const resData = response.data as string
 
 	// ~~~magic~~~
