@@ -33,20 +33,29 @@ const barMetaData: BarMetaData[] = [
 	}
 ]
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async () => {
 	console.log('loading...')
-	const bars: BoulderBar[] = barMetaData.map((meta) => {
-		return {
-			meta: meta,
-			occupancy: loadOccupancy(meta)
-		}
-	})
+	const bars: BoulderBar[] = await Promise.all(
+		barMetaData.map(async (meta): Promise<BoulderBar> => {
+			return {
+				meta: meta,
+				occupancy: await loadOccupancy(meta)
+			}
+		})
+	)
 
 	return {
 		bars: bars
 	}
 }
 
-const loadOccupancy = (meta: BarMetaData) => {
-	return Math.round(Math.random() * 100)
+const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
+	const response = await ax.get(meta.tag)
+	const resData = response.data as string
+
+	const h2Regex = /<h2>(\d*)%<\/h2>/g
+
+	const matches = h2Regex.exec(resData)
+	console.log(matches![1])
+	return Number(matches === null ? -1 : matches[1])
 }

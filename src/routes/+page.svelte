@@ -2,7 +2,7 @@
 	import Bar from './Bar.svelte'
 	import RefreshIndicator from './RefreshIndicator.svelte'
 	import type { PageServerData } from './$types'
-	import { goto, invalidate, invalidateAll } from '$app/navigation'
+	import { invalidateAll } from '$app/navigation'
 
 	export let data: PageServerData
 
