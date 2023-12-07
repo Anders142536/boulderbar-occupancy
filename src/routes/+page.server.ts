@@ -5,7 +5,7 @@ import { inspect } from 'util'
 
 export const ssr = false
 const ax = axios.create({
-	baseURL: 'https://flash-cloud.boulderbar.net/modules/bbext/CustomerCapacity.php?gym='
+	baseURL: 'https://flash-cloud.boulderbar.net/modules/bbext/'
 })
 const barMetaData: BarMetaData[] = [
 	{
@@ -51,7 +51,7 @@ export const load: PageServerLoad = async () => {
 }
 
 const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
-	const response = await ax.get(meta.tag)
+	const response = await ax.get(`CustomerCapacity.php?gym=${meta.tag}`)
 	console.debug(`request: ${inspect(response.request)}`)
 	const resData = response.data as string
 
