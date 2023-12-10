@@ -5,12 +5,17 @@
 	import { invalidateAll } from '$app/navigation'
 	import NavTab from './NavTab.svelte'
 
-	let countdown = 60
+	const refreshinterval = 60
+	let countdown = refreshinterval
 
 	function refreshCountdown() {
 		if (countdown <= 1) {
-			countdown = 10
-			invalidateAll()
+			// this stops the countdown at 1 if the browser is closed to avoid traffic
+			// and to automatically reload on opening
+			if (document.hasFocus()) {
+				countdown = refreshinterval
+				invalidateAll()
+			}
 		} else {
 			countdown = countdown - 1
 		}
