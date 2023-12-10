@@ -1,36 +1,44 @@
 import axios from 'axios'
 import type { PageServerLoad } from './$types'
 import type { BarMetaData, BoulderBar } from './types'
-import { inspect } from 'util'
 
 export const ssr = false
 const ax = axios.create({
 	baseURL: 'https://flash-cloud.boulderbar.net/modules/bbext/'
 })
+const axOld = axios.create({
+	baseURL: 'https://shopsbg.boulderbar.net:8081/modules/bbext/'
+})
 const barMetaData: BarMetaData[] = [
 	{
 		name: 'Wiener Berg',
-		tag: 'wb'
+		tag: 'wb',
+		newEndpoint: true
 	},
 	{
 		name: 'Hauptbahnhof',
-		tag: 'hbf'
+		tag: 'hbf',
+		newEndpoint: true
 	},
 	{
 		name: 'Hannovermarkt',
-		tag: 'han'
+		tag: 'han',
+		newEndpoint: true
 	},
 	{
 		name: 'Seestadt',
-		tag: 'see'
+		tag: 'see',
+		newEndpoint: true
 	},
 	{
 		name: 'Linz',
-		tag: 'LNZ'
+		tag: 'LNZ',
+		newEndpoint: false
 	},
 	{
 		name: 'Salzburg',
-		tag: 'SBG'
+		tag: 'SBG',
+		newEndpoint: false
 	}
 ]
 
@@ -51,8 +59,7 @@ export const load: PageServerLoad = async () => {
 }
 
 const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
-	const response = await ax.get(`CustomerCapacity.php?gym=${meta.tag}`)
-	console.debug(`request: ${inspect(response.request)}`)
+	const response = await (meta.newEndpoint ? ax : axOld).get(`CustomerCapacity.php?gym=${meta.tag}`)
 	const resData = response.data as string
 
 	// ~~~magic~~~

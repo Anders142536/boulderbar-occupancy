@@ -6,4 +6,5 @@ export type BoulderBar = {
 export type BarMetaData = {
 	name: string
 	tag: string
+	newEndpoint: boolean
 }
