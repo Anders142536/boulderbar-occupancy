@@ -6,24 +6,35 @@
 	import NavTab from './NavTab.svelte'
 
 	const refreshinterval = 60
+	let activeTimeoutId: NodeJS.Timeout
 	let countdown = refreshinterval
 
 	function refreshCountdown() {
+		// this stops the countdown if the browser is hidden to avoid traffic
+		if (document.hidden)
+			return
+
 		if (countdown <= 1) {
-			// this stops the countdown at 1 if the browser is closed to avoid traffic
-			// and to automatically reload on opening
-			if (document.hasFocus()) {
 				countdown = refreshinterval
 				invalidateAll()
-			}
 		} else {
 			countdown = countdown - 1
 		}
-		setTimeout(refreshCountdown, 1000)
+		activeTimeoutId = setTimeout(refreshCountdown, 1000)
+	}
+
+	function forceRefresh() {
+		clearTimeout(activeTimeoutId)
+		countdown = refreshinterval
+		invalidateAll()
+		activeTimeoutId = setTimeout(refreshCountdown, 1000)
 	}
 
 	refreshCountdown()
+
 </script>
+
+<svelte:window on:focus={forceRefresh} />
 
 <AppShell>
 	<div slot="header" class="text-right bg-black p-2">
