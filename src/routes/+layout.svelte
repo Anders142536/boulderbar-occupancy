@@ -53,8 +53,8 @@
 			flex="flex-1 lg:flex-none"
 			class="w-full"
 		>
-			<NavTab route="/old" label="Old" img="nav-todo" />
-			<NavTab route="/" label="Fancy" img="nav-cal" />
+			<NavTab route="/old" label="Old" />
+			<NavTab route="/" label="Fancy" />
 		</TabGroup>
 	</svelte:fragment>
 </AppShell>
