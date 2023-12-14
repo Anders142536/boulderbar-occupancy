@@ -31,14 +31,14 @@
 	<iframe
 		sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups"
 		scrolling="no"
-		src="https://shopsbg.boulderbar.net:8081/modules/bbext/CustomerCapacity.php?gym=LNZ"
+		src="https://flash-cloud-sbg.boulderbar.net/modules/bbext/CustomerCapacity.php?gym=LNZ"
 		frameborder="0"
 	/>
 	<h3 class="h3">Salzburg</h3>
 	<iframe
 		sandbox="allow-same-origin allow-scripts allow-forms allow-top-navigation allow-popups"
 		scrolling="no"
-		src="https://shopsbg.boulderbar.net:8081/modules/bbext/CustomerCapacity.php?gym=SBG"
+		src="https://flash-cloud-sbg.boulderbar.net/modules/bbext/CustomerCapacity.php?gym=SBG"
 		frameborder="0"
 	/>
 </div>

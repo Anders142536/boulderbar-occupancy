@@ -7,7 +7,7 @@ const ax = axios.create({
 	baseURL: 'https://flash-cloud.boulderbar.net/modules/bbext/'
 })
 const axOld = axios.create({
-	baseURL: 'https://shopsbg.boulderbar.net:8081/modules/bbext/'
+	baseURL: 'https://flash-cloud-sbg.boulderbar.net/modules/bbext/'
 })
 const barMetaData: BarMetaData[] = [
 	{
