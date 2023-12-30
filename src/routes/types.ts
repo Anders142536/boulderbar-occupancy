@@ -1,10 +1,9 @@
-export type BoulderBar = {
-	meta: BarMetaData
+export type HallOccupancy = {
+	name: string
 	occupancy: number
 }
 
 export type BarMetaData = {
 	name: string
 	tag: string
-	newEndpoint: boolean
 }

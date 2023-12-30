@@ -1,65 +1,75 @@
-import axios from 'axios'
+import axios, { type AxiosInstance } from 'axios'
 import type { PageServerLoad } from './$types'
-import type { BarMetaData, BoulderBar } from './types'
+import type { BarMetaData, HallOccupancy } from './types'
 
 export const ssr = false
-const ax = axios.create({
+
+const axBBNew = axios.create({
 	baseURL: 'https://flash-cloud.boulderbar.net/modules/bbext/'
 })
-const axOld = axios.create({
+
+const axBBOld = axios.create({
 	baseURL: 'https://flash-cloud-sbg.boulderbar.net/modules/bbext/'
 })
-const barMetaData: BarMetaData[] = [
+
+const BBNewMetaData: BarMetaData[] = [
 	{
 		name: 'Wiener Berg',
-		tag: 'wb',
-		newEndpoint: true
+		tag: 'wb'
 	},
 	{
 		name: 'Hauptbahnhof',
-		tag: 'hbf',
-		newEndpoint: true
+		tag: 'hbf'
 	},
 	{
 		name: 'Hannovermarkt',
-		tag: 'han',
-		newEndpoint: true
+		tag: 'han'
 	},
 	{
 		name: 'Seestadt',
-		tag: 'see',
-		newEndpoint: true
-	},
+		tag: 'see'
+	}
+]
+
+const BBOldMetaData: BarMetaData[] = [
 	{
 		name: 'Linz',
-		tag: 'LNZ',
-		newEndpoint: false
+		tag: 'LNZ'
 	},
 	{
 		name: 'Salzburg',
-		tag: 'SBG',
-		newEndpoint: false
+		tag: 'SBG'
 	}
 ]
 
 export const load: PageServerLoad = async () => {
 	console.log('loading...')
-	const bars: BoulderBar[] = await Promise.all(
-		barMetaData.map(async (meta): Promise<BoulderBar> => {
-			return {
-				meta: meta,
-				occupancy: await loadOccupancy(meta)
-			}
-		})
-	)
+	const bbNew = BBNewMetaData.map(async (meta): Promise<HallOccupancy> => {
+		return {
+			name: meta.name,
+			occupancy: await loadBBOccupancy(meta, axBBNew)
+		}
+	})
+
+	const bbOld = BBOldMetaData.map(async (meta): Promise<HallOccupancy> => {
+		return {
+			name: meta.name,
+			occupancy: await loadBBOccupancy(meta, axBBOld)
+		}
+	})
+
+	const blockFabrik: Promise<HallOccupancy> = Promise.resolve({
+		name: 'BlockFabrik',
+		occupancy: await loadBlockFabrikOccupancy()
+	})
 
 	return {
-		bars: bars
+		occupancies: bbNew.concat(bbOld, blockFabrik)
 	}
 }
 
-const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
-	const response = await (meta.newEndpoint ? ax : axOld).get(`CustomerCapacity.php?gym=${meta.tag}`)
+const loadBBOccupancy = async (meta: BarMetaData, axios: AxiosInstance): Promise<number> => {
+	const response = await axios.get(`CustomerCapacity.php?gym=${meta.tag}`)
 	const resData = response.data as string
 
 	// ~~~magic~~~
@@ -77,4 +87,8 @@ const loadOccupancy = async (meta: BarMetaData): Promise<number> => {
 
 	console.log(`loaded ${meta.name.padEnd(13)} with ${occ.toString().padStart(3)}%`)
 	return occ
+}
+
+const loadBlockFabrikOccupancy = async (): Promise<number> => {
+	return 0
 }

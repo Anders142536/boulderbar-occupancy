@@ -11,12 +11,11 @@
 
 	function refreshCountdown() {
 		// this stops the countdown if the browser is hidden to avoid traffic
-		if (document.hidden)
-			return
+		if (document.hidden) return
 
 		if (countdown <= 1) {
-				countdown = refreshinterval
-				invalidateAll()
+			countdown = refreshinterval
+			invalidateAll()
 		} else {
 			countdown = countdown - 1
 		}
@@ -31,7 +30,6 @@
 	}
 
 	refreshCountdown()
-
 </script>
 
 <svelte:window on:focus={forceRefresh} />
