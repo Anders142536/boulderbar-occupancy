@@ -44,21 +44,21 @@ const BBOldMetaData: BarMetaData[] = [
 
 export const load: PageServerLoad = async () => {
 	console.log('loading...')
-	const bbNew = BBNewMetaData.map(async (meta): Promise<HallOccupancy> => {
+	const bbNew = await Promise.all(BBNewMetaData.map(async (meta): Promise<HallOccupancy> => {
 		return {
 			name: meta.name,
 			occupancy: await loadBBOccupancy(meta, axBBNew)
 		}
-	})
+	}))
 
-	const bbOld = BBOldMetaData.map(async (meta): Promise<HallOccupancy> => {
+	const bbOld = await Promise.all(BBOldMetaData.map(async (meta): Promise<HallOccupancy> => {
 		return {
 			name: meta.name,
 			occupancy: await loadBBOccupancy(meta, axBBOld)
 		}
-	})
+	}))
 
-	const blockFabrik: Promise<HallOccupancy> = Promise.resolve({
+	const blockFabrik: HallOccupancy = ({
 		name: 'BlockFabrik',
 		occupancy: await loadBlockFabrikOccupancy()
 	})
