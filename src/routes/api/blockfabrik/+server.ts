@@ -1,6 +1,6 @@
-import axios from "axios";
-import type { RequestHandler } from "./$types";
-import { json } from "@sveltejs/kit";
+import axios from 'axios'
+import type { RequestHandler } from './$types'
+import { json } from '@sveltejs/kit'
 
 type BlockFabrikData = {
 	counter: number

@@ -1,6 +1,6 @@
-import { error, json } from "@sveltejs/kit"
-import type { RequestHandler } from "./$types"
-import axios from "axios"
+import { error, json } from '@sveltejs/kit'
+import type { RequestHandler } from './$types'
+import axios from 'axios'
 
 const axNew = axios.create({
 	baseURL: 'https://flash-cloud.boulderbar.net/modules/bbext/'
@@ -9,7 +9,6 @@ const axNew = axios.create({
 const axOld = axios.create({
 	baseURL: 'https://flash-cloud-sbg.boulderbar.net/modules/bbext/'
 })
-
 
 export const GET: RequestHandler = async ({ url }) => {
 	const tag = url.searchParams.get('tag')
