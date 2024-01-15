@@ -3,13 +3,14 @@
 	import { TabAnchor } from '@skeletonlabs/skeleton'
 
 	export let route: string
-	export let img: string
 	export let label: string
 </script>
 
 <TabAnchor href={route} selected={$page.url.pathname === route}>
 	<svelte:fragment slot="lead">
-		<img class="m-auto" height="48" width="48" src="/icons/{img}.png" alt={label} />
+		<div class="flex justify-center">
+			<slot />
+		</div>
 	</svelte:fragment>
 	{label}
 </TabAnchor>

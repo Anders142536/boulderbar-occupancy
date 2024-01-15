@@ -1,8 +1,6 @@
 import type { PageServerLoad } from './$types'
 import { type LocationMetaData, LocationEndpointType } from './types'
 
-export const ssr = false
-
 const locationMetaData: LocationMetaData[] = [
 	{
 		name: 'Wienerberg',

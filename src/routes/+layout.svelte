@@ -4,6 +4,8 @@
 	import RefreshIndicator from './RefreshIndicator.svelte'
 	import { invalidateAll } from '$app/navigation'
 	import NavTab from './NavTab.svelte'
+	import Newspaper from '$lib/svg/Newspaper.svelte'
+	import Sparkles from '$lib/svg/Sparkles.svelte'
 
 	const refreshinterval = 60
 	let activeTimeoutId: NodeJS.Timeout
@@ -51,8 +53,12 @@
 			flex="flex-1 lg:flex-none"
 			class="w-full"
 		>
-			<NavTab route="/old" label="Old" />
-			<NavTab route="/" label="Fancy" />
+			<NavTab route="/old" label="Old">
+				<Newspaper />
+			</NavTab>
+			<NavTab route="/" label="Fancy">
+				<Sparkles />
+			</NavTab>
 		</TabGroup>
 	</svelte:fragment>
 </AppShell>
