@@ -5,7 +5,7 @@ export const ssr = false
 
 const locationMetaData: LocationMetaData[] = [
 	{
-		name: 'Wiener Berg',
+		name: 'Wienerberg',
 		tag: 'wb',
 		type: LocationEndpointType.BBNew
 	},
@@ -15,7 +15,7 @@ const locationMetaData: LocationMetaData[] = [
 		type: LocationEndpointType.BBNew
 	},
 	{
-		name: 'Hannovermarkt',
+		name: 'Hannovergasse',
 		tag: 'han',
 		type: LocationEndpointType.BBNew
 	},
