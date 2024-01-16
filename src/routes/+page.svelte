@@ -20,25 +20,28 @@
 		for (let loc of data.locations) {
 			switch (loc.type) {
 				case LocationEndpointType.BBNew:
-					axios.get(`/api/boulderbar?tag=${loc.tag}`).then((res) => handle(loc.name, res))
+					axios
+						.get(`/api/boulderbar?tag=${loc.tag}`)
+						.then((res) => handle(loc.name, res, 'boulderbar'))
 					break
 				case LocationEndpointType.BBOld:
 					axios
 						.get(`/api/boulderbar?tag=${loc.tag}&useOld=true`)
-						.then((res) => handle(loc.name, res))
+						.then((res) => handle(loc.name, res, 'boulderbar'))
 					break
 				case LocationEndpointType.BlockFabrik:
-					axios.get(`/api/blockfabrik`).then((res) => handle(loc.name, res))
+					axios.get(`/api/blockfabrik`).then((res) => handle(loc.name, res, 'blockfabrik'))
 					break
 			}
 		}
 	}
 
-	const handle = (name: string, res: AxiosResponse) => {
+	const handle = (name: string, res: AxiosResponse, icon: string) => {
 		console.log(`occupancy for ${name}: ${res.data.occupancy}`)
 		occupancies.set(name, {
 			name: name,
 			occupancy: res.data.occupancy,
+			icon: icon,
 			loading: false
 		} as HallOccupancy)
 

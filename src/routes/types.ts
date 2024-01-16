@@ -1,6 +1,7 @@
 export type HallOccupancy = {
 	name: string
 	occupancy: number
+	icon: string
 	loading: boolean
 }
 
