@@ -4,7 +4,13 @@
 	export let occ: HallOccupancy
 
 	let bg = 'green'
-	$: bg = occ.occupancy < 50 ? 'green' : occ.occupancy > 80 ? 'red' : 'yellow'
+	$: {
+		if (occ.error) {
+			bg = 'rgb(var(--color-surface-500))'
+		} else {
+			bg = occ.occupancy < 50 ? 'green' : occ.occupancy > 80 ? 'red' : 'yellow'
+		}
+	}
 </script>
 
 <div>
@@ -14,7 +20,7 @@
 			<h3 class="h3 flex-1">{occ.name}</h3>
 		</div>
 		<div class="m-auto">
-			{occ.occupancy}%
+			{occ.error ? 'Error' : occ.occupancy}%
 		</div>
 	</div>
 	<div class="flex gap-2 items-center">

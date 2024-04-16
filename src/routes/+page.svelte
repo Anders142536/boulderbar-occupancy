@@ -46,15 +46,38 @@
 				case LocationEndpointType.BBNew:
 					axios
 						.get(`/api/boulderbar?tag=${loc.tag}`)
-						.then((res) => handle(loc.name, res, 'boulderbar'))
+						.catch((error) => {
+							handleError(loc.name, 'boulderbar')
+						})
+						.then((res) => {
+							if (res) {
+								handle(loc.name, res, 'boulderbar')
+							}
+						})
 					break
 				case LocationEndpointType.BBOld:
 					axios
 						.get(`/api/boulderbar?tag=${loc.tag}&useOld=true`)
-						.then((res) => handle(loc.name, res, 'boulderbar'))
+						.catch((error) => {
+							handleError(loc.name, 'boulderbar')
+						})
+						.then((res) => {
+							if (res) {
+								handle(loc.name, res, 'boulderbar')
+							}
+						})
 					break
 				case LocationEndpointType.BlockFabrik:
-					axios.get(`/api/blockfabrik`).then((res) => handle(loc.name, res, 'blockfabrik'))
+					axios
+						.get(`/api/blockfabrik`)
+						.catch((error) => {
+							handleError(loc.name, 'blockfabrik')
+						})
+						.then((res) => {
+							if (res) {
+								handle(loc.name, res, 'blockfabrik')
+							}
+						})
 					break
 			}
 		}
@@ -68,7 +91,21 @@
 			name: name,
 			occupancy: res.data.occupancy,
 			icon: icon,
-			loading: false
+			loading: false,
+			error: false
+		} as HallOccupancy)
+
+		sort()
+	}
+
+	const handleError = (name: string, icon: string) => {
+		console.warn(`an error occured whilst fetching ${name}`)
+		occupancies.set(name, {
+			name: name,
+			occupancy: -1,
+			icon: icon,
+			loading: false,
+			error: true
 		} as HallOccupancy)
 
 		sort()

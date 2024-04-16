@@ -3,6 +3,7 @@ export type HallOccupancy = {
 	occupancy: number
 	icon: string
 	loading: boolean
+	error: boolean
 }
 
 export type LocationMetaData = {
