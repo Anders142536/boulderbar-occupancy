@@ -16,6 +16,30 @@
 	let occupancies: Map<string, HallOccupancy> = new Map()
 	let occList: HallOccupancy[] = []
 
+	const init = () => {
+		for (let loc of data.locations) {
+			switch (loc.type) {
+				case LocationEndpointType.BBNew:
+				case LocationEndpointType.BBOld:
+					occupancies.set(loc.name, {
+						name: loc.name,
+						occupancy: 0,
+						icon: 'boulderbar',
+						loading: true
+					} as HallOccupancy)
+					break
+				case LocationEndpointType.BlockFabrik:
+					occupancies.set(loc.name, {
+						name: loc.name,
+						occupancy: 0,
+						icon: 'blockfabrik',
+						loading: true
+					} as HallOccupancy)
+					break
+			}
+		}
+	}
+
 	const loadOccupancies = async () => {
 		for (let loc of data.locations) {
 			switch (loc.type) {
@@ -34,6 +58,8 @@
 					break
 			}
 		}
+
+		sort()
 	}
 
 	const handle = (name: string, res: AxiosResponse, icon: string) => {
@@ -45,6 +71,10 @@
 			loading: false
 		} as HallOccupancy)
 
+		sort()
+	}
+
+	const sort = () => {
 		// takes values and converts it to array
 		occList = Array.from(occupancies, ([name, value]) => value)
 
@@ -57,6 +87,7 @@
 			)
 	}
 
+	init()
 	loadOccupancies()
 </script>
 
