@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { HallOccupancy } from './types'
+	import Skull from '$lib/svg/Skull.svelte'
 
 	export let occ: HallOccupancy
 
@@ -19,8 +20,12 @@
 			<img class="w-[24px] h-[24px]" src="{occ.icon}.png" alt="icon for location" />
 			<h3 class="h3 flex-1">{occ.name}</h3>
 		</div>
-		<div class="m-auto">
-			{occ.error ? 'Error' : occ.occupancy}%
+		<div class="m-auto flex gap-2 items-center">
+			{#if occ.error}
+				<Skull />Error<Skull />
+			{:else}
+				{occ.occupancy}%
+			{/if}
 		</div>
 	</div>
 	<div class="flex gap-2 items-center">
