@@ -24,7 +24,7 @@ export const GET: RequestHandler = async ({ url }) => {
 	const resData = response.data as string
 
 	// remove this, just for dev purposes
-	await new Promise((f) => setTimeout(f, 1000))
+	//await new Promise((f) => setTimeout(f, 1000))
 
 	// ~~~magic~~~
 	const h2Regex = /<h2>(\d*)%<\/h2>/g
