@@ -44,7 +44,7 @@
 
 <style>
 	.loading {
-		animation-duration: 1s;
+		animation-duration: 0.5s;
 		animation-name: loading-bar;
 		animation-iteration-count: infinite;
 		animation-timing-function: ease-out;
