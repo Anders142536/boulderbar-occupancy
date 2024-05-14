@@ -40,7 +40,20 @@
 		}
 	}
 
+	const setAllToLoading = () => {
+		for (const [name, occ] of occupancies) {
+			occupancies.set(name, {
+				name: occ.name,
+				occupancy: occ.occupancy,
+				icon: occ.icon,
+				loading: true,
+				error: false
+			})
+		}
+	}
+
 	const loadOccupancies = async () => {
+		setAllToLoading()
 		for (let loc of data.locations) {
 			switch (loc.type) {
 				case LocationEndpointType.BBNew:
