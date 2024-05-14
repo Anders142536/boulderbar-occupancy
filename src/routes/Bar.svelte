@@ -15,7 +15,7 @@
 </script>
 
 <div>
-	<div class="flex space-between">
+	<div class="flex space-between mb-1">
 		<div class="flex flex-1 gap-2 items-center">
 			<img class="w-[24px] h-[24px]" src="{occ.icon}.png" alt="icon for location" />
 			<h3 class="h3 flex-1">{occ.name}</h3>
