@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<div class="flex gap-2 items-center">
-		<div class="flex-1 bg-black border-2 rounded-lg border-neutral-700 overflow-hidden p-[2px]">
+		<div class="flex-1 {occ.loading ? "loading" : "bg-black"} border-2 rounded-lg border-neutral-700 overflow-hidden p-[2px]">
 			<div
 				class="p-2 h-6 rounded"
 				style="background:{bg}; width:{occ.error ? 100 : occ.occupancy}%"
@@ -37,3 +37,33 @@
 		</div>
 	</div>
 </div>
+
+
+<style>
+	.loading {
+		animation-duration: 1s;
+		animation-name: loading-bar;
+		animation-iteration-count: infinite;
+		animation-timing-function: linear;
+		box-shadow: inset 0px 0px 5px 2px black;
+		background: repeating-linear-gradient(
+			45deg,
+			#000,
+			#000 20px,
+			#333 20px,
+			#333 40px
+			);
+	}
+
+	@keyframes loading-bar {
+		0% {
+			background-position-x: 0px;
+		}
+
+		100% {
+			background-position-x: 18px;
+		}
+
+	}
+
+</style>
