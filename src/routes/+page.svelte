@@ -91,7 +91,7 @@
 			name: name,
 			occupancy: res.data.occupancy,
 			icon: icon,
-			loading: true, // TODO make this false again, wip
+			loading: false,
 			error: false
 		} as HallOccupancy)
 
