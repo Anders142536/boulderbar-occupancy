@@ -47,7 +47,7 @@
 				occupancy: occ.occupancy,
 				icon: occ.icon,
 				loading: true,
-				error: false
+				error: occ.error
 			})
 		}
 	}
