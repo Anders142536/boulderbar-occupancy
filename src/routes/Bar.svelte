@@ -74,12 +74,20 @@
 			box-shadow: inset 0px 0px 10px 10px black;
 		}
 
-		15% {
-			box-shadow: inset 0px 0px 10px 5px black;
+		12% {
+			box-shadow: inset 0px 0px 10px 3px black;
+		}
+
+		50% {
+			box-shadow: inset 0px 0px 10px 10px black;
+		}
+
+		62% {
+			box-shadow: inset 0px 0px 10px 3px black;
 		}
 
 		90% {
-			box-shadow: inset 0px 0px 10px 5px black;
+			box-shadow: inset 0px 0px 10px 9px black;
 		}
 
 		100% {
