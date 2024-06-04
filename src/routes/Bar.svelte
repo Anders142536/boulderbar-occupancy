@@ -71,28 +71,28 @@
 	@keyframes stripes {
 		0% {
 			background-position: 0px;
-			box-shadow: inset 0px 0px 10px 10px black;
+			box-shadow: inset 0px 0px 0.6rem 1rem black;
 		}
 
 		12% {
-			box-shadow: inset 0px 0px 10px 3px black;
+			box-shadow: inset 0px 0px 0.6rem 0.1rem black;
 		}
 
 		50% {
-			box-shadow: inset 0px 0px 10px 10px black;
+			box-shadow: inset 0px 0px 0.6rem 0.7rem black;
 		}
 
 		62% {
-			box-shadow: inset 0px 0px 10px 3px black;
+			box-shadow: inset 0px 0px 0.6rem 0.1rem black;
 		}
 
 		90% {
-			box-shadow: inset 0px 0px 10px 9px black;
+			box-shadow: inset 0px 0px 0.6rem 0.7rem black;
 		}
 
 		100% {
 			background-position: 600px;
-			box-shadow: inset 0px 0px 10px 30px black;
+			box-shadow: inset 0px 0px 0.6rem 1rem black;
 		}
 	}
 </style>
