@@ -44,13 +44,17 @@
 
 <style>
 	.loading {
-		animation-duration: 0.5s;
-		animation-name: loading-bar;
-		animation-iteration-count: infinite;
-		animation-timing-function: ease-out;
+		animation: blink 0.5s infinite ease-out, stripes 1s infinite linear;
+		/*background: repeating-linear-gradient(
+				45deg,
+				#000,
+				#000 20px,
+				#333 20px,
+				#333 40px)*/
+		background: linear-gradient(90deg, #000, #333 10%, #000 11%);
 	}
 
-	@keyframes loading-bar {
+	@keyframes blink {
 		0% {
 			border-color: #404040;
 		}
@@ -61,6 +65,26 @@
 
 		100% {
 			border-color: #404040;
+		}
+	}
+
+	@keyframes stripes {
+		0% {
+			background-position: 0px;
+			box-shadow: inset 0px 0px 10px 10px black;
+		}
+
+		15% {
+			box-shadow: inset 0px 0px 10px 5px black;
+		}
+
+		90% {
+			box-shadow: inset 0px 0px 10px 5px black;
+		}
+
+		100% {
+			background-position: 600px;
+			box-shadow: inset 0px 0px 10px 30px black;
 		}
 	}
 </style>
